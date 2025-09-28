@@ -1,0 +1,228 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+    .home_body{
+        padding-bottom: 150px;
+    }
+    .nav_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 10vh;
+        background-color: #f95959; 
+        /* position: sticky;
+        top: 0; */
+        /* bottom: 0; */
+        padding: 0 20px;
+    }
+    .nav_container h1 {
+        font-size: 25px;
+        font-weight: 600;
+        color: #233142;
+    }
+    .company_name {
+        color: #233142;
+        margin-right: auto; 
+    }
+    .nav_options {
+        display: flex;
+        justify-content: center; 
+        font-weight: 700;
+        font-size: larger;
+        gap: 10px;
+    }
+    .nav_options a {
+        color:  #233142;
+        text-decoration: none;
+        padding: 0 10px;
+    }
+    .username {
+        color: #233142;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+    }
+
+   
+    .data_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product_card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    width: calc(50% - 20px); /* Two items per row */
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+.product_card:hover{
+    cursor: default;
+    transform: scale(0.9);
+}
+/* Delay hover effect */
+.product_card:hover:not(:active) {
+    transition-delay: 0.3s; 
+}
+
+
+@media (max-width: 768px) {
+    .product_card {
+        width: calc(100% - 20px); 
+    }
+}
+
+.product_image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-right: 12px;
+}
+
+.product_info {
+    flex: 1;
+}
+
+.product_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.product_price {
+    font-size: 16px;
+    color: #007185; 
+    margin-bottom: 8px;
+}
+
+.product_description {
+    margin-bottom: 8px;
+}
+
+.product_category {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.product_rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating_value {
+    font-weight: bold;
+    color: #c45500; 
+    margin-right: 4px;
+}
+
+.rating_count {
+    color: #666;
+}
+
+.username a{
+    text-decoration: none;
+    color: #233142;
+}
+
+.add_to_cart_home{
+    background-color: #4b67d5;
+    background-color:#e3e3e3;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+    box-shadow: 2px 2px 4px black;
+}
+
+.login_logout{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.login_logout a{
+    color: #233142;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .nav_options {
+        display: none;
+    }
+}
+
+
+</style>
+
+<nav class="nav_container">
+    <div class="company_name">
+        <h1>One Book : Your Ecommerce platform </h1>
+    </div>
+
+    <div class="nav_options">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'viewcart' %}">Cart</a>
+        <a href="{% url 'about' %}">About</a>
+    </div>
+    
+    <div class="username">
+        <a href="{% url 'home' %}"><h3>Welcome {{username|upper}}</h3></a>
+    </div>
+    
+    <div class="login_logout">
+        {% if username %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+</nav>
+
+{% block content %}
+
+<div class="home_body">
+    <div class="data_container">
+        {% for data in all_data %}
+        <div onclick="go_to_detailed_view({{data.id}})" class="product_card">
+
+            <img class="product_image" src="{{ data.image }}" alt="{{ data.title }}">
+            <div class="product_info">
+                <h3 class="product_title">{{ data.title }}</h3>
+                <p class="product_price">${{ data.price }}</p>
+                <p class="product_description">{{ data.subtitle  | truncatewords:25}}</p>
+                <p class="product_category">{{ data.author }}</p>
+                <div class="product_rating">
+                    <a class="rating_value"  href={{data.url}}>   Read More ...</a>
+                    
+                </div>
+            </div>
+            <a class="add_to_cart_home" href="{% url 'add_to_cart' data.id %}">Add To Cart</a>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function go_to_detailed_view(product_id){
+
+        window.location.href=`product/${product_id}`
+    }
+</script>
+
+{% endblock %}
+
+{% include 'footer.html' %}

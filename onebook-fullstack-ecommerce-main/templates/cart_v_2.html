@@ -1,0 +1,85 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+
+<style>
+    .cart_title {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #233142;
+    margin-top: 50px;
+}
+
+.cart_item_container {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.cart_item_container img {
+    max-height: 200px;
+}
+
+.buy_btn_div {
+    margin-top: 20px;
+}
+
+.buy_btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buy_btn:hover {
+    background-color: #0056b3;
+}
+section{
+    padding: 40px ;
+    padding-bottom: 100px;
+}
+
+</style>
+
+<div class="cart_title">Your Cart : {{ username|upper }}</div>
+<section>
+
+
+{% for item in product_in_cart %}
+
+
+<div class="cart_item_container" >
+    <img style="max-height: 200px;" src={{item.products.image}} alt="">
+    <p>Product: {{ item.products.title }} - ${{ item.products.price }}</p>
+    <p>Quantity: {{ item.quantity }}</p>
+
+</div>
+{% endfor %}
+
+{% if product_in_cart %}
+<div class="buy_btn_div">
+    <!-- <button class="buy_btn" onclick="OrderPlaced({{total}})">Buy Now</button> -->
+    <a href="{% url 'buyNow'  %}">
+        <button class="buy_btn">Buy Now</button>
+    </a>
+</div>
+{% else %}
+<div class="buy_btn_div">
+    <a href="{% url 'home'  %}">
+        
+        <button class="buy_btn">Its Empty :( Add Some Items - _ - </button>
+    </a>
+</div>
+
+{% endif %}
+</section>
+
+
+
+{% endblock %}

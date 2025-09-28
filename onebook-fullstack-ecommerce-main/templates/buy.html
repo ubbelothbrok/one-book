@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Your Purchase</title>
+    <link rel="stylesheet" href="{% static 'styles/buy_page.css' %}">
+</head>
+<body>
+
+<style>
+    /* styles/buy_page.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.showimg {
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 40vh;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    color: #333;
+}
+
+h4 {
+    color: #666;
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.Heading_title{
+    text-align: center;
+    margin-bottom: 10vh;
+}
+h3{
+    margin: 1px;
+}
+    
+</style>
+
+<h1 class="Heading_title">Make Your Purchase</h1>
+
+<div class="container">
+    <div class="showimg_div">
+        <img class="showimg" src="{% static 'myQR.jpg' %}" alt="">
+    </div>
+    <div style="display: flex;flex-direction: column; gap: 10px;">
+        <h4>Your OrderID : {{ orderID }}</h4>
+        <h3 style="color: #f95959;">Total Amount to be Paid : {{ amount }}</h3>
+        <small style="text-align: center; color: rgba(0, 0, 0, 0.4);">DO NOT REFRESH</small>
+        <small style="text-align: center; color: rgba(0, 0, 0, 0.6); font-weight: 600;">Onces Paid Click To Return To Home</small>
+        <a href="{% url 'home' %}"><button> Return to Home</button></a>
+    </div>
+</div>
+
+</body>
+</html>

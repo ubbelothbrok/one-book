@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Book - Full Stack E-Commerce Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav h3 {
+            color: #f95959;
+            margin: 0;
+            font-size: 24px;
+            margin-left: 20px;
+        }
+
+        nav div {
+            margin-top: 10px;
+        }
+
+        nav button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        nav button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        div {
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        h5 {
+            font-size: 18px;
+            color: #666;
+        }
+        @media only screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav h3 {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            nav div {
+                margin-top: 20px;
+            }
+            div {
+                padding: 10px;
+            }
+        }
+        .landing_bottom {
+    position: relative;
+    overflow: hidden;
+    height: 65vh;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.landing_bottom h1 {
+    font-size: 3rem; 
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9); 
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    padding: 20px; 
+}
+
+.landing_bottom h5 {
+    color: rgba(255, 255, 255, 0.8); 
+    text-align: center; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+    padding: 10px; 
+}
+
+.landing_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+
+        
+    </style>
+</head>
+<body>
+
+<nav>
+    <h3>One Book : Your Passport to Imagination.</h3>
+    <div>
+        <button><a href="{% url 'register' %}">Register</a></button>
+        <button><a href="{% url 'login' %}">Login</a></button>
+    </div>
+</nav>
+
+<div class="landing_bottom">
+    <h1>A Full Stack E-Commerce App</h1>
+    <h5>By Amit Pandey</h5>
+    <img class="landing_img" src="https://i.pinimg.com/originals/1b/38/f3/1b38f3ade75e9d3717e9a60cef8e9c25.jpg" alt="">
+</div>
+
+</body>
+</html>

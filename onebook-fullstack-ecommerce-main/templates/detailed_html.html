@@ -1,0 +1,51 @@
+{% extends "home.html" %}
+
+{% block content %}
+<style>
+    .this_product_data{
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .add_to_cart_item{
+        margin: 10px 5px;
+        padding: 10px 20px;
+        background-color: #f95959;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    .add_to_cart_item:hover{
+
+        transform: scale(1.3);
+    }
+    .add_to_cart_item a{
+        
+        color: #233142;
+        text-decoration: none;
+    }
+    .product_card:hover{
+    transform: scale(1);
+}
+</style>
+
+<div class="this_product_data">
+        <div class="product_card">
+            <img class="product_image" src="{{ this_product_data.image }}" alt="{{ this_product_data.title }}">
+            <div class="product_info">
+                <h3 class="product_title">{{ this_product_data.title }}</h3>
+                <p class="product_price">${{ this_product_data.price }}</p>
+                <p class="product_description">{{ this_product_data.subtitle }}</p>
+                <p class="product_category">{{ this_product_data.author }}</p>
+            </div>
+        </div>
+        <div class="add_to_cart_item">
+
+            <a href="{% url 'add_to_cart' this_product_data.id %}">Add To Cart</a>
+        </div>
+</div>
+
+{% endblock %}
