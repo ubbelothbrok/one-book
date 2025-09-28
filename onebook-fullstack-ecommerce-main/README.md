@@ -46,7 +46,7 @@ Installation & Setup
 
 
 
-git clone https://github.com/tcetamitpandey/onebook-fullstack-ecommerce.git](https://github.com/ubbelothbrok/one-book.git
+git clone https://github.com/ubbelothbrok/one-book.git
 cd onebook-fullstack-ecommerce
 
 2. Create or activate virtual environment
