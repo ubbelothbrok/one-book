@@ -46,7 +46,7 @@ Installation & Setup
 
 
 
-git clone https://github.com/tcetamitpandey/onebook-fullstack-ecommerce.git
+git clone https://github.com/tcetamitpandey/onebook-fullstack-ecommerce.git](https://github.com/ubbelothbrok/one-book.git
 cd onebook-fullstack-ecommerce
 
 2. Create or activate virtual environment
@@ -104,7 +104,8 @@ This project is licensed under the MIT License – feel free to use and modify.
 
 ---
 
-Built with :heart: by Amit Pandey
+
+
 
 
 
